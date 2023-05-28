@@ -1,0 +1,11 @@
+<p><%= message%></p>
+<form style="text-align:center" action="/signup" method="post">
+    <label for="email">E-Mail: </label><br>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <input type="email" name="email" id="email"><br>
+    <label for="password">Password: </label><br>
+    <input type="password" name="password" id="password"><br>
+    <label for="cPassword">Confirm Password: </label><br>
+    <input type="Password" name="cPassword" id="cPassword"><br>
+    <button type="submit" class="btn">Sign Up</button>
+</form>

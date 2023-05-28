@@ -1,0 +1,13 @@
+
+<p style="text-align: center; color:red;"><%= message%></p>
+
+
+<form style="text-align:center" action="/login" method="post">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label for="email">E-Mail: </label><br>
+    <input type="text" name="email" id="email" value="<%= data.email %>"><br>
+    <label for="password">Password: </label><br>
+    <input type="password" name="password" id="password"><br>
+    <button type="submit" class="btn">Login</button><br>
+</form>
+<a style="text-align:center" href="/reset">Forgot Password</a>

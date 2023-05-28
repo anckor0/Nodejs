@@ -1,0 +1,25 @@
+<nav class="main-header__nav">
+    <ul class="main-header__item-list">
+        <li class="main-header__item"><a class="<%= current === 'home' ? 'active' : ''%>" href="/">Home Page</a></li>
+        <li class="main-header__item"><a class="<%= current === 'shop' ? 'active' : ''%>" href="/products">Shop</a></li>
+        <% if (isAuth) { %>
+        <li class="main-header__item"><a class="<%= current === 'orders' ? 'active' : ''%>" href="/orders">Orders</a></li>
+        <li class="main-header__item"><a class="<%= current === 'cart' ? 'active' : ''%>" href="/cart">Cart</a></li>
+        <li class="main-header__item"><a class="<%= current === 'add-product' ? 'active' : ''%>" href="/admin/add-product">Add Product</a></li>
+        <li class="main-header__item"><a class="<%= current === 'admin' ? 'active' : ''%>" href="/admin/admin-dash">Admin Dashboard</a></li>
+    </ul>
+    <ul class="main-header__item-list">
+        <li>|  </li>
+        <li style="display: inline;" class="main-header__item">
+            <form action="/logout" method="post">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit">logout</button>
+            </form>
+        </li>
+        <% } %>
+        <% if (isAuth != true) { %>
+        <li style="display: inline;" class="main-header__item"><a class="<%= current === 'login' ? 'active' : ''%>" href="/login">Login</a></li>
+        <li style="display: inline;" class="main-header__item"><a class="<%= current === 'signup' ? 'active' : ''%>" href="/signup">Sign Up</a></li>
+        <% } %>
+    </ul>
+</nav>

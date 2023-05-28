@@ -1,0 +1,9 @@
+<%- include('includes/head.ejs')%>
+<body id="p-de">
+    <header class="main-header">
+        <%- include('includes/navigation.ejs')%>
+        <h1><%= productTitle%></h1><hr>
+        <img class="hero-image" src="/<%= productImage%>" alt="<%= productTitle%>"><br><br>
+        <%- include('includes/add-to-cart.ejs', {product: product}) %>
+    </header>
+<%- include('includes/end.ejs')%>

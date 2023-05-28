@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs')%>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <%- include('../includes/navigation.ejs')%>
+    </header>
+    <p style="text-align: center; color: red;"><%= errorMessage%></p>
+    <main>
+        <form class="product-form" action="/admin/<% if (editMode) { %>edit-product<% } else { %>add-product<% } %>" method="POST" enctype="multipart/form-data">
+            <div class="form-control">
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="<% if (editMode) { %><%= product.title %><% } %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <label for="image">image</label>
+                <input type="file" name="newImage" id="newImage" >
+                <!-- value="<% if (editMode) { %><%= product.image %><% } %>" -->
+                
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" value="<% if (editMode) { %><%= product.price %><% } %>">
+
+                <label for="desc">Description</label>
+                <input type="text" style="height: 150px;" name="desc" id="desc" value="<% if (editMode) { %><%= product.desc %><% } %>">
+
+                <% if (editMode) { %>
+                    <input type="hidden" name="prodId" value="<%= product._id %>">
+                    <!-- <input type="hidden" name="userId" value="<%= product.userId %>" /> -->
+                <% } %>
+            </div>
+
+            <button class="btn" type="submit"><% if (!editMode) { %>Add Product<% } else { %>Update Product<% } %></button>
+        </form>
+    </main>
+<%- include('../includes/end.ejs')%>
